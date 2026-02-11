@@ -9,10 +9,10 @@
     :root{
       --text:#111827;
       --muted:rgba(17,24,39,.72);
-      --card:rgba(255,255,255,.86);
+      --card:rgba(255,255,255,.88);
       --border:rgba(17,24,39,.10);
-      --accent:#8b1e3f;   /* bordeaux */
-      --accent2:#c73b63;  /* rose */
+      --accent:#8b1e3f;
+      --accent2:#c73b63;
     }
 
     *{ box-sizing:border-box; }
@@ -23,45 +23,34 @@
       display:grid;
       place-items:center;
       overflow:hidden;
-
-      /* Times New Roman everywhere */
       font-family: "Times New Roman", Times, serif;
       color: var(--text);
 
-      /* Base love-ish background behind the photo */
       background:
         radial-gradient(1200px 600px at 20% 10%, #fdecef, transparent 60%),
         radial-gradient(1200px 600px at 80% 30%, #ffe3ea, transparent 55%),
         linear-gradient(180deg, #fff7f9, #ffffff 55%);
     }
 
-    /* Transparent photo overlay across the whole page */
+    /* Background image — NOT stretched anymore */
     body::before{
       content:"";
       position:fixed;
       inset:0;
       background-image: url("bg.png");
-      background-size: cover;
+      background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-
-      /* Make it “transparent over the background” */
-      opacity: .22;
-
-      /* Slight blur + soft contrast so text stays readable */
-      filter: blur(1.2px) saturate(1.05) contrast(1.02);
-
+      opacity: .35;
       z-index:0;
       pointer-events:none;
-      transform: scale(1.03);
     }
 
-    /* Subtle vignette to make center readable */
     body::after{
       content:"";
       position:fixed;
       inset:0;
-      background: radial-gradient(circle at center, rgba(255,255,255,.15), rgba(0,0,0,.18));
+      background: rgba(255,255,255,.35);
       z-index:0;
       pointer-events:none;
     }
@@ -69,7 +58,6 @@
     .card{
       position:relative;
       z-index:1;
-
       width:min(560px, 92vw);
       background: var(--card);
       border:1px solid var(--border);
@@ -79,10 +67,7 @@
       backdrop-filter: blur(6px);
     }
 
-    .header{
-      text-align:center;
-      margin-bottom:18px;
-    }
+    .header{ text-align:center; margin-bottom:18px; }
 
     .kicker{
       letter-spacing:.12em;
@@ -93,18 +78,9 @@
       margin-bottom:10px;
     }
 
-    h1{
-      margin:0 0 8px;
-      font-size:30px;
-      font-weight:700;
-    }
+    h1{ margin:0 0 8px; font-size:30px; }
 
-    p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.45;
-      font-size:16px;
-    }
+    p{ margin:0; color:var(--muted); font-size:16px; }
 
     .divider{
       width:64px;
@@ -112,7 +88,6 @@
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       border-radius:99px;
       margin: 14px auto 0;
-      opacity:.9;
     }
 
     .stage{
@@ -120,28 +95,22 @@
       position:relative;
       height:240px;
       border-radius:14px;
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,245,247,.92));
+      background: rgba(255,255,255,.9);
       border:1px solid var(--border);
       overflow:hidden;
     }
 
     .btn{
       position:absolute;
-      border:1px solid transparent;
       border-radius:999px;
       padding:12px 18px;
       font-size:15px;
       cursor:pointer;
-      user-select:none;
       font-weight:700;
       font-family: "Times New Roman", Times, serif;
-      transition: transform .08s ease, box-shadow .15s ease, background .15s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      white-space: nowrap;
+      transition:.15s;
+      white-space:nowrap;
     }
-    .btn:active{ transform: scale(.98); }
 
     #yesBtn{
       left:26%;
@@ -149,102 +118,57 @@
       transform: translate(-50%, -50%);
       background: var(--accent);
       color:#fff;
-      box-shadow: 0 10px 24px rgba(139, 30, 63, .25);
     }
-    #yesBtn:hover{ background:#781a36; }
 
     #noBtn{
       left:72%;
       top:58%;
       transform: translate(-50%, -50%);
-      background: rgba(255,255,255,.95);
-      color: var(--accent);
-      border-color: rgba(139, 30, 63, .35);
-      box-shadow: 0 10px 22px rgba(17, 24, 39, .10);
+      background:#fff;
+      color:var(--accent);
+      border:1px solid rgba(139,30,63,.35);
     }
-    #noBtn:hover{ background: rgba(199, 59, 99, .06); }
 
-    .footer{
-      margin-top:14px;
-      text-align:center;
-      font-size:12.5px;
-      color:var(--muted);
-    }
+    .footer{ margin-top:14px; text-align:center; font-size:13px; }
   </style>
 </head>
 
 <body>
-  <main class="card" role="main">
+  <main class="card">
     <div class="header">
       <div class="kicker">Valentine's Day</div>
-      <h1>Will you be my Valentine? 💌</h1>
+      <h1>Will you be my Valentine?</h1>
       <p>Please choose one option.</p>
       <div class="divider"></div>
     </div>
 
-    <section class="stage" id="stage" aria-label="Choice area">
-      <button class="btn" id="yesBtn" type="button">Yes 💖</button>
-      <button class="btn" id="noBtn" type="button">No</button>
+    <section class="stage" id="stage">
+      <button class="btn" id="yesBtn">Yes</button>
+      <button class="btn" id="noBtn">No</button>
     </section>
 
-    <div class="footer">Note: “No” is feeling a little… evasive today.</div>
+    <div class="footer">Note: “No” is feeling evasive today.</div>
   </main>
 
-  <script>
-    const stage = document.getElementById("stage");
-    const noBtn  = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
+<script>
+const stage = document.getElementById("stage");
+const noBtn  = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
 
-    let autoMoveInterval = null;
+function moveNoButton() {
+  const stageRect = stage.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
 
-    function moveNoButton() {
-      const stageRect = stage.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
+  const maxX = stageRect.width - btnRect.width;
+  const maxY = stageRect.height - btnRect.height;
 
-      const padding = 12;
-      const maxX = stageRect.width  - btnRect.width  - padding;
-      const maxY = stageRect.height - btnRect.height - padding;
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top  = Math.random() * maxY + "px";
+}
 
-      const x = Math.max(padding, Math.random() * Math.max(maxX, padding));
-      const y = Math.max(padding, Math.random() * Math.max(maxY, padding));
+setInterval(moveNoButton, 700);
 
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top  = `${y}px`;
-      noBtn.style.transform = "translate(0,0)";
-    }
-
-    // Starts moving automatically (no hover needed)
-    function startAutoMove(){
-      if (autoMoveInterval) return;
-      autoMoveInterval = setInterval(moveNoButton, 650);
-    }
-
-    // Still moves away if they try to hover/touch
-    noBtn.addEventListener("mouseenter", moveNoButton);
-    noBtn.addEventListener("mouseover", moveNoButton);
-    noBtn.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      moveNoButton();
-    }, { passive: false });
-
-    // Optional: if cursor gets near, jump
-    stage.addEventListener("mousemove", (e) => {
-      const btn = noBtn.getBoundingClientRect();
-      const dx = Math.max(btn.left - e.clientX, 0, e.clientX - btn.right);
-      const dy = Math.max(btn.top  - e.clientY, 0, e.clientY - btn.bottom);
-      const dist = Math.hypot(dx, dy);
-      if (dist < 45) moveNoButton();
-    });
-
-    yesBtn.addEventListener("click", () => {
-      window.location.href = "yes.html";
-    });
-
-    // Initialize
-    setTimeout(() => {
-      moveNoButton();
-      startAutoMove();
-    }, 300);
-  </script>
+yesBtn.onclick = () => window.location.href = "yes.html";
+</script>
 </body>
 </html>
