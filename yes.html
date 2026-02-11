@@ -1,40 +1,100 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>YEEES!</title>
+  <title>Yay!</title>
   <style>
+    :root{
+      --bg:#0b0f1a;
+      --card:#111827;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
+      --accent:#c73b63;
+      --border:rgba(255,255,255,.10);
+    }
+    *{ box-sizing:border-box; }
     body{
-      margin:0; min-height:100vh; display:grid; place-items:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #0b1020; color: white; text-align:center; padding: 24px;
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:26px;
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(199,59,99,.25), transparent 55%),
+        radial-gradient(900px 500px at 85% 30%, rgba(255,120,160,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg), #050713);
+      color:var(--text);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      text-align:center;
     }
     .wrap{
-      width: min(720px, 92vw);
+      width:min(760px, 95vw);
+      background: rgba(17,24,39,.55);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+      box-shadow: 0 18px 70px rgba(0,0,0,.45);
+      backdrop-filter: blur(6px);
     }
-    h1{ font-size: 42px; margin: 0 0 10px; }
-    p{ opacity:.85; margin: 0 0 18px; }
+    h1{
+      margin: 4px 0 8px;
+      font-size: 40px;
+      letter-spacing: .02em;
+    }
+    p{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.5;
+    }
     img{
-      width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      width:100%;
+      border-radius:14px;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 18px 60px rgba(0,0,0,.5);
+      display:block;
+    }
+    .caption{
+      margin-top: 12px;
+      font-size: 16px;
+      color: rgba(255,255,255,.9);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .actions{
+      margin-top: 16px;
     }
     a{
-      display:inline-block; margin-top:16px; color:#93c5fd; text-decoration:none;
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(199,59,99,.45);
+      color:#ffd1dc;
+      text-decoration:none;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      transition: background .15s ease;
     }
+    a:hover{ background: rgba(199,59,99,.14); }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>YEEEES!!! 🥳💘</h1>
-    <p>Du hast „Yes“ gewählt. Beste Entscheidung.</p>
+  <main class="wrap">
+    <h1>Yesss! 🥳💘</h1>
+    <p>You chose “Yes”.</p>
 
-    <!-- Ersetze den Link durch dein Lieblings-GIF -->
-    <img alt="Happy yes meme"
-         src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" />
+    <!-- Swap this GIF if you want another one -->
+    <img
+      alt="Happy celebration meme"
+      src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif"
+    />
 
-    <a href="index.html">Nochmal spielen</a>
-  </div>
+    <div class="caption">
+      Mats is very happy that you want to be his valentines and is looking forward to saturday!
+    </div>
+
+    <div class="actions">
+      <a href="index.html">Back</a>
+    </div>
+  </main>
 </body>
 </html>
