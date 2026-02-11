@@ -7,8 +7,6 @@
   <style>
     :root{
       --bg:#0b0f1a;
-      --card:#111827;
-      --text:#ffffff;
       --muted:rgba(255,255,255,.78);
       --accent:#c73b63;
       --border:rgba(255,255,255,.10);
@@ -24,8 +22,8 @@
         radial-gradient(900px 500px at 20% 10%, rgba(199,59,99,.25), transparent 55%),
         radial-gradient(900px 500px at 85% 30%, rgba(255,120,160,.18), transparent 55%),
         linear-gradient(180deg, var(--bg), #050713);
-      color:var(--text);
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      color:#fff;
+      font-family: "Times New Roman", Times, serif;
       text-align:center;
     }
     .wrap{
@@ -45,8 +43,8 @@
     p{
       margin: 0 0 16px;
       color: var(--muted);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       line-height: 1.5;
+      font-size: 16px;
     }
     img{
       width:100%;
@@ -58,12 +56,10 @@
     .caption{
       margin-top: 12px;
       font-size: 16px;
-      color: rgba(255,255,255,.9);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: rgba(255,255,255,.92);
+      line-height: 1.5;
     }
-    .actions{
-      margin-top: 16px;
-    }
+    .actions{ margin-top: 16px; }
     a{
       display:inline-block;
       padding: 10px 14px;
@@ -71,8 +67,9 @@
       border:1px solid rgba(199,59,99,.45);
       color:#ffd1dc;
       text-decoration:none;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       transition: background .15s ease;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: 700;
     }
     a:hover{ background: rgba(199,59,99,.14); }
   </style>
@@ -82,7 +79,6 @@
     <h1>Yesss! 🥳💘</h1>
     <p>You chose “Yes”.</p>
 
-    <!-- Swap this GIF if you want another one -->
     <img
       alt="Happy celebration meme"
       src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif"
